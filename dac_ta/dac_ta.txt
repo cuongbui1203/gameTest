@@ -1,0 +1,21 @@
+
+Mỗi gói tin gồm tối thiểu 2 trường
+- type: int 4 bytes, little endian, là loại gói tin
+- len: int 4 bytes, little endian, là độ dài mảng data đi kèm đằng sau
+Mỗi gói tin có thể kèm theo mảng data có độ dài len
+Mỗi phần tử của mảng có kiểu: int 4 bytes, little endian
+
+Type:
+	0: PKT_HELLO
+		- là gói tin đầu tiên 
+        - trường có giá trị bằng độ dày của KEY
+        - 4 byte tiếp theo là PORT_GAME muốn mở.
+        - Cuối cùng là Chuỗi KEY có length được để trong trường len.
+
+	1: PKT_SERVER_SS
+		gói tin được server gửi khi server đã khởi tạo game thành công và đang đợi ngời chơi vào.
+		độ dài trường len là 0.
+
+	2: PKT_REFUTE
+		gói tin được server gửi khi sảy ra lỗi.
+		độ dài trường len là 0.
